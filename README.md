@@ -1,3 +1,5 @@
+![image](https://github.com/nikhilgarg26/frontend_antd_design/assets/116938919/acab4ebe-57ea-48db-a0f8-750fa6b368ea)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
