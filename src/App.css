@@ -37,21 +37,34 @@
   }
 }
 
-.header-right{
-  width: 30%;
-  display: flex;
-  justify-content: space-around;
+
+.edit{
+  /* box-sizing: border-box; */
+  border: 1px solid white;
+  padding: 2px;
+  margin: 2px;
 }
 
-.custom-select .ant-select-selector::before {
-  content: url('./customIcon.svg');
-  margin-right: 8px; /* Adjust spacing between icon and text */
+.edit:hover{
+  border: 1px solid #f67080;
+  border-radius: 5px;
 }
 
-.header{
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1); /* Only bottom shadow */
+
+.column-edit{
+  border: none;
 }
 
-.layout-bg{
-  background-image: url(./bg.png);
+.col-edit{
+  font-size: 15px;
+  /* width: 50%    ; */
+  /* text-overflow: ellipsis; */
+}
+
+.table-edit{
+  width: 100%;
+}
+
+.option{
+  background-color: red;
 }

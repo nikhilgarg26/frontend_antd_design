@@ -13,6 +13,7 @@ root.render(
       borderRadius: 10,
       fontFamily: 'sans-serif',
       colorBgLayout: '#FFFDFD',
+      colorTextPlaceholder:'#f28c80',
 
       // Alias Token
       colorBgContainer: '#ffffff',

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import './App.css';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
   UserOutlined,
-  VideoCameraOutlined,
   FileTextOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, theme, Select, Avatar, Popover, Divider, Typography, Space } from 'antd';
+import { Button, Layout, Menu, theme, Select, Avatar, Popover, Typography, Space, Row, Col } from 'antd';
 import Profile from './Profile';
+import Dashboard from './Dasboard';
+import items from './items';
 const { Header, Sider, Content } = Layout;
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -23,69 +24,83 @@ const App = () => {
           zIndex: 100,
           padding: 0,
           background: colorBgContainer,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
           boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)",
           height: '75px'
         }}
       >
-        <Button
-          type="text"
-          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          onClick={() => setCollapsed(!collapsed)}
-          style={{
-            fontSize: '16px',
-            width: 64,
-            height: 64,
-          }}
-        />
+        <Row align={"middle"}>
+          <Col span={6}>
+            <Row align={"middle"}>
+              <Col span={5}>
+                <Row justify={'center'}>
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: '16px',
+                width: 64,
+                height: 64,
+              }}
+            /></Row></Col>
+            <img src='./logo2.png' alt='' style={{width:'100px'}}></img>
+            </Row>
+          </Col>
 
-        <div className='header-right'>
+          <Col span={18}>
+            <Row justify={'end'} align={'middle'}>
+              <Col span={4}>
+                <Button type="primary" icon={<FileTextOutlined />} size='middle'>DOCUMENTATION</Button></Col>
+              <Col span={3} >
+                <Select
+                  defaultValue="English"
+                  className="custom-select"
+                  style={{
+                    width: 'fit-content',
+                    // margin: '0 20px'
+                  }}
+                  options={[
+                    {
+                      value: 'english',
+                      label: 'English',
+                      // className: 'option'
+                    },
+                    {
+                      value: 'hindi',
+                      label: 'Hindi',
+                    },
+                    {
+                      value: 'russian',
+                      label: 'Russian',
+                    },
+                    {
+                      value: 'french',
+                      label: 'French',
+                    },
+                  ]}
+                />
+              </Col>
+              <Col span={2}>
+                <Popover placement="bottomLeft" title={<Profile></Profile>}>
+                  <Avatar size={40} icon={<UserOutlined />} style={{
+                    border: '3px solid #F87060',
+                    // margin: '0 30px'
+                  }} />
 
-          <Button type="primary" icon={<FileTextOutlined />} size='middle'>DOCUMENTATION</Button>
-          <Select
-            defaultValue="ENGLISH"
-            className="custom-select"
-            style={{
-              width: 'fit-content',
-              margin: '0 20px'
-            }}
-            options={[
-              {
-                value: 'english',
-                label: 'ENGLISH',
-              },
-              {
-                value: 'hindi',
-                label: 'HINDI',
-              },
-              {
-                value: 'russian',
-                label: 'RUSSIAN',
-              },
-              {
-                value: 'french',
-                label: 'FRENCH',
-              },
-            ]}
-          />
-          <Popover placement="bottomLeft" title={<Profile></Profile>}>
-            <Avatar size={40} icon={<UserOutlined />} style={{
-              border: '3px solid #F87060',
-              margin: '0 30px'
-            }} />
+                </Popover>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
 
-          </Popover>
-
-        </div>
+        {/* </div> */}
 
       </Header >
 
       <Layout style={{
         minHeight: '100vh',
       }}>
-        <Sider trigger={null} collapsible collapsed={collapsed} theme='light' style={{
+        <Sider trigger={null} collapsible collapsed={collapsed} theme='light' width={'250px'} style={{
           alignContent: 'center',
           boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.2)",
         }} >
@@ -95,27 +110,11 @@ const App = () => {
             mode="inline"
             defaultSelectedKeys={['1']}
             style={{
-              width: '85%',
+              // width: '90%',
               margin: 'auto',
               marginTop: 20,
             }}
-            items={[
-              {
-                key: '1',
-                icon: <UserOutlined />,
-                label: 'nav 1',
-              },
-              {
-                key: '2',
-                icon: <VideoCameraOutlined />,
-                label: 'nav 2',
-              },
-              {
-                key: '3',
-                icon: <UploadOutlined />,
-                label: 'nav 3',
-              },
-            ]}
+            items={items}
           />
         </Sider>
 
@@ -126,13 +125,13 @@ const App = () => {
           background: `url('./bg.png')`,
           backgroundSize: 'contain', // Decrease the size of the background image
           backgroundRepeat: 'no-repeat', // Prevent the background image from repeating
-          backgroundPosition: 'center', 
-          marginTop: '20px',
+          backgroundPosition: 'center',
+          // marginTop: '20px',
         }}>
           <Content>
             <Space size="large"></Space>
-            <Typography.Title level={3} style={{
-              margin: '20px 20px',
+            <Typography.Title level={2} style={{
+              margin: '30px 20px',
             }}>Customer</Typography.Title>
 
             <Content
@@ -145,8 +144,7 @@ const App = () => {
                 boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.2)"
               }}
             >
-              <Button type="primary">Primary</Button>
-              <Button className='default'>Default</Button>
+              <Dashboard></Dashboard>
             </Content>
           </Content>
         </Layout>
